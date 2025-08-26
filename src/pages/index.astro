@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Historia from '../components/Historia.astro';
+import Servicios from '../components/Servicios.astro';
+import Galeria from '../components/Galeria.astro';
+import Productos from '../components/Productos.astro';
+import Footer from '../components/Footer.astro';
+import Refran from '../components/Refran.astro';
+---
+
+<Layout title="Inicio" description="Peluquería Bartoli en Málaga - Estilo y elegancia en cada corte. Ofrecemos servicios de peluquería y barbería de alta calidad.">
+  <Header slot="header" />
+  
+  <Historia />
+  <Refran />
+  <Servicios />
+  <Galeria />
+  <Productos />
+  
+  <Footer slot="footer" />
+</Layout>

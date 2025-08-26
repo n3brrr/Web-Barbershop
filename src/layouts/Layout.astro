@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | Peluquería Bartoli</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<!-- Metaetiquetas para SEO -->
+		<meta name="robots" content="index, follow">
+		<meta name="author" content="Peluquería Bartoli">
+		<meta name="keywords" content="peluquería, barbería, corte de pelo, afeitado, Málaga, estilo, belleza, Bartoli">
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://peluqueriabartoli.com/">
+		<meta property="og:title" content={`${title} | Peluquería Bartoli`}>
+		<meta property="og:description" content={description}>
+		<meta property="og:image" content="/og-image.jpg">
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://peluqueriabartoli.com/">
+		<meta property="twitter:title" content={`${title} | Peluquería Bartoli`}>
+		<meta property="twitter:description" content={description}>
+		<meta property="twitter:image" content="/og-image.jpg">
+	</head>
+	<body class="min-h-screen flex flex-col">
+		<header class="bg-dark text-white">
+			<slot name="header" />
+		</header>
+		
+		<main class="flex-grow">
+			<slot />
+		</main>
+		
+		<footer class="bg-dark text-white py-8">
+			<slot name="footer" />
+		</footer>
+	</body>
+</html>

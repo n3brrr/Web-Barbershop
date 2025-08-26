@@ -1,0 +1,174 @@
+---
+// Componente Header con video de fondo y logo
+---
+
+<div class="relative overflow-hidden h-[100vh] w-full">
+  <!-- Video de fondo -->
+ 
+  <video 
+    class="absolute top-0 left-0 w-full h-full object-cover" 
+    
+    muted 
+    loop 
+    playsinline
+  >
+    <source src="/videos/video.mp4" type="video/mp4">
+  </video>
+  
+  <!-- Overlay oscuro para mejorar legibilidad -->
+  <div class="absolute top-0 left-0 w-full h-full bg-black/50"></div>
+  <!-- Contenido del header -->
+  <div class="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-end pb-20 text-center text-white">
+    <img 
+      src="/Fotos/Logobartoli.png" 
+      alt="Peluquería Bartoli Logo" 
+      class="w-48 md:w-64 mb-6 hover-scale"
+    />
+    <p class="text-xl md:text-2xl mb-8 max-w-2xl fade-in">Estilo y elegancia en cada corte</p>
+    <a 
+      href="#servicios" 
+      class="btn-primary hover-glow mb-12 text-xl md:text-2xl px-10 py-2 transition-transform duration-300 hover:scale-110"
+    >
+      Reserva ahora
+    </a>
+  </div>
+  
+  <!-- Navegación -->
+  <nav class="fixed top-0 left-0 w-full p-4 z-20 transition-all duration-700 ease-in-out" id="navbar">
+    <div class="container mx-auto flex justify-center items-center">
+      <div class="hidden md:flex space-x-8 relative">
+        <div id="nav-background" class="absolute bg-black/20 rounded-lg transition-all duration-500 ease-in-out" style="display: none;"></div>
+        <a href="#" class="text-xl text-white p-2 nav-link relative z-10">Inicio</a>
+        <a href="#historia" class="text-xl text-white p-2 nav-link relative z-10">Historia</a>
+        <a href="#servicios" class="text-xl text-white p-2 nav-link relative z-10">Servicios</a>
+        <a href="#galeria" class="text-xl text-white p-2 nav-link relative z-10">Galería</a>
+        <a href="#productos" class="text-xl text-white p-2 nav-link relative z-10">Productos</a>
+        <a href="#contacto" class="text-xl text-white p-2 nav-link relative z-10">Contacto</a>
+      </div>
+      <button class="md:hidden text-white absolute right-4" id="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <style>
+    .scrolled {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      transition: all 0.7s ease-in-out;
+    }
+
+    .nav-link {
+      transition: all 0.5s ease-in-out;
+    }
+
+    .nav-link:hover {
+      color: #FFD700;
+    }
+  </style>
+
+  <script>
+    // Add scroll event listener to handle navbar transparency
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 0) {
+        navbar?.classList.add('scrolled');
+      } else {
+        navbar?.classList.remove('scrolled');
+      }
+    });
+
+    // Navigation hover effect with smooth animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const navBackground = document.getElementById('nav-background');
+
+      let currentLink = null;
+
+      navLinks.forEach(link => {
+        link.addEventListener('mouseenter', (e) => {
+          const target = e.target as HTMLElement;
+          const rect = target.getBoundingClientRect();
+          
+          if (navBackground) {
+            navBackground.style.opacity = '0';
+            navBackground.style.display = 'block';
+            navBackground.style.width = `${rect.width}px`;
+            navBackground.style.height = `${rect.height}px`;
+            navBackground.style.transform = `translateX(${rect.left - target.parentElement!.getBoundingClientRect().left}px)`;
+            
+            // Force reflow
+            navBackground.offsetHeight;
+            
+            navBackground.style.opacity = '1';
+            navBackground.style.transition = 'all 0.5s ease-in-out';
+          }
+          
+          currentLink = target;
+        });
+      });
+
+      const navContainer = document.querySelector('.md\\:flex');
+      navContainer?.addEventListener('mouseleave', () => {
+        if (navBackground) {
+          navBackground.style.opacity = '0';
+          setTimeout(() => {
+            navBackground.style.display = 'none';
+          }, 500);
+        }
+        currentLink = null;
+      });
+    });
+  </script>
+  
+  <!-- Menú móvil -->
+  <div class="fixed top-0 left-0 w-full h-full bg-dark z-30 transform translate-x-full transition-transform duration-500 ease-in-out" id="mobile-menu">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-8">
+        <a href="#" class="text-white text-xl font-bold">Bartoli</a>
+        <button id="close-menu-button" class="text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-4">
+        <a href="#" class="text-white p-2 hover:bg-black/20 hover:text-[#FFD700] transition-all duration-500 ease-in-out rounded-lg text-lg">Inicio</a>
+        <a href="#historia" class="text-white p-2 hover:bg-black/20 hover:text-[#FFD700] transition-all duration-500 ease-in-out rounded-lg text-lg">Historia</a>
+        <a href="#servicios" class="text-white p-2 hover:bg-black/20 hover:text-[#FFD700] transition-all duration-500 ease-in-out rounded-lg text-lg">Servicios</a>
+        <a href="#galeria" class="text-white p-2 hover:bg-black/20 hover:text-[#FFD700] transition-all duration-500 ease-in-out rounded-lg text-lg">Galería</a>
+        <a href="#productos" class="text-white p-2 hover:bg-black/20 hover:text-[#FFD700] transition-all duration-500 ease-in-out rounded-lg text-lg">Productos</a>
+        <a href="#contacto" class="text-white p-2 hover:bg-black/20 hover:text-[#FFD700] transition-all duration-500 ease-in-out rounded-lg text-lg">Contacto</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Funcionalidad para el menú móvil
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.remove('translate-x-full');
+    });
+    
+    closeMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+    });
+    
+    // Cerrar menú al hacer clic en un enlace
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu?.classList.add('translate-x-full');
+      });
+    });
+  });
+</script>

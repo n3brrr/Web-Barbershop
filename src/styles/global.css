@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-black: #000000;
+  --color-gold: #D4AF37;
+  --color-beige: #F5F5DC;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-black);
+  background-color: var(--color-beige);
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#D4AF37] text-white px-6 py-2 rounded-md transition-all duration-300 hover:bg-[#B8860B];
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-8 relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    @apply block w-24 h-1 bg-[#D4AF37] mx-auto mt-2;
+  }
+}
+
+/* Microinteracciones */
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.hover-glow {
+  @apply transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/20;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
