@@ -9,7 +9,7 @@ Una elegante web para barberías construida con Astro | CSS | JavaScript
 [![GitHub Stars](https://img.shields.io/github/stars/n3brrr/Web-Barbershop)](https://github.com/n3brrr/Web-Barbershop/stargazers)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-[Ver Demo](web-barbershop-ctk33ytgv-n3brrrs-projects.vercel.app) · [Reportar Bug](https://github.com/n3brrr/Web-Barbershop/issues) · [Solicitar Feature](https://github.com/n3brrr/Web-Barbershop/issues)
+[Ver Demo](https://web-barbershop-five.vercel.app/) · [Reportar Bug](https://github.com/n3brrr/Web-Barbershop/issues) · [Solicitar Feature](https://github.com/n3brrr/Web-Barbershop/issues)
 
 </div>
 
