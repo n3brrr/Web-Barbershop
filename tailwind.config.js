@@ -9,8 +9,11 @@ export default {
         'dark': '#000000',     // Black
       },
       fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
+        sans: ['Playfair Display', 'serif'],
       },
+      fontWeight: {
+        normal: '500',
+      }
     },
   },
   plugins: [],
